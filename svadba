@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на свадьбу</title>
+    <!-- Подключаем надежные шрифты с поддержкой кириллицы -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-green: #6b8e76;
+            --bg-color: #f3f6f4;
+            --text-color: #313d36;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .card {
+            background: #ffffff;
+            max-width: 550px;
+            width: 100%;
+            padding: 50px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            text-align: center; /* ВСЁ ПО ЦЕНТРУ */
+            box-sizing: border-box;
+            position: relative;
+            border: 1px solid #e0ede4;
+            overflow: hidden;
+        }
+
+        /* Декор в углах */
+        .card::before { content: '🌿'; position: absolute; top: 20px; left: 20px; font-size: 24px; opacity: 0.5; }
+        .card::after { content: '🌿'; position: absolute; bottom: 20px; right: 20px; font-size: 24px; opacity: 0.5; }
+
+        .flowers-top { font-size: 30px; margin-bottom: 10px; display: block; }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px; /* Сделали размер чуть меньше для мобильных */
+            letter-spacing: 4px; /* Уменьшили интервал, чтобы 100% влезало в одну строку */
+            color: #2c3e33;
+            margin: 0 0 20px 0;
+            font-weight: 700;
+            white-space: nowrap; /* Запрещает перенос слова на новую строку */
+        }
+
+        .names {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-style: italic;
+            color: var(--main-green);
+            margin: 15px 0;
+            line-height: 1.1;
+        }
+
+        .info-line {
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #88a693;
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: var(--main-green);
+            margin: 30px auto;
+            opacity: 0.3;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .rsvp-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            margin: 40px 0 25px 0;
+            color: #2c3e33;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 35px;
+        }
+
+        .btn-choice {
+            background: none;
+            border: 1.5px solid var(--main-green);
+            padding: 12px 45px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            color: var(--text-color);
+            transition: 0.3s;
+        }
+
+        .btn-choice.active, .btn-choice:hover {
+            background: var(--main-green);
+            color: white;
+        }
+
+        .input-box {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #667a6d;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddecde;
+            border-radius: 12px;
+            box-sizing: border-box;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            outline: none;
+            background: #fbfdfb;
+        }
+
+        input:focus { border-color: var(--main-green); }
+
+        .btn-submit {
+            background: #4a6354;
+            color: white;
+            border: none;
+            padding: 18px;
+            width: 100%;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover { background: #2c3e33; transform: translateY(-2px); }
+
+        #success { display: none; padding: 40px 0; }
+        .success-icon { font-size: 50px; margin-bottom: 20px; display: block; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div id="main-content">
+        <span class="flowers-top">🌸 ✿ 🌸</span>
+        <h1>С В А Д Ь Б А</h1>
+        
+        <div class="names">Даниила<br><span style="font-size: 20px; font-style: normal; font-weight: 300; color: #acc2b3;">и</span><br>Анастасии</div>
+        <div class="info-line">Москва • 25.06.2027</div>
+
+        <div class="divider"></div>
+
+        <p>Хотим поделиться с вами важной новостью: 25 июня 2027 года состоится наша свадьба! Мы очень хотим, чтобы этот день мы провели вместе с вами, поэтому, пожалуйста, сохраните эту дату в календаре.</p>
+
+        <p>Сейчас мы активно готовимся к празднику и хотим, чтобы всем гостям было уютно и комфортно. Чтобы всё продумать наилучшим образом, нам важно знать примерное количество гостей.</p>
+
+        <p>Будем очень признательны, если вы нажмёте кнопку ниже и отметитесь. Это пока предварительный опрос, он ни к чему вас не обязывает, но очень поможет нам в выборе.</p>
+
+        <div class="divider"></div>
+
+        <div class="rsvp-title">Предварительный опрос</div>
+
+        <div class="btn-group">
+            <button type="button" class="btn-choice" id="yes" onclick="setAttending('Да')">ДА</button>
+            <button type="button" class="btn-choice" id="no" onclick="setAttending('Нет')">НЕТ</button>
+        </div>
+
+        <form id="form">
+            <div class="input-box">
+                <label>Ваше Имя и Фамилия:</label>
+                <input type="text" id="name" placeholder="Введите здесь" required>
+            </div>
+
+            <div class="input-box">
+                <label>Сколько человек будет с Вами?</label>
+                <input type="number" id="count" value="1" min="1" max="10" required>
+            </div>
+
+            <button type="submit" class="btn-submit">Отправить ответ</button>
+        </form>
+    </div>
+
+    <div id="success">
+        <span class="success-icon">🤍</span>
+        <h2 style="font-family: 'Playfair Display', serif;">Спасибо!</h2>
+        <p>Ваш ответ успешно отправлен организаторам. Мы будем очень рады Вас видеть!</p>
+    </div>
+</div>
+
+<script>
+    let attVal = '';
+
+    function setAttending(val) {
+        attVal = val;
+        document.getElementById('yes').classList.toggle('active', val === 'Да');
+        document.getElementById('no').classList.toggle('active', val === 'Нет');
+    }
+
+    document.getElementById('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (!attVal) {
+            alert('Пожалуйста, выберите "ДА" или "НЕТ"');
+            return;
+        }
+
+        // ВСТАВЛЕННЫЕ ДАННЫЕ ВАШЕГО БОТА И CHAT ID (Лишний пробел в токене автоматически убран программно)
+        const TOKEN = '8862363263:AAHcvuq9zvPuExxuNpqUgkzQxHgMy3jqNfI';
+        const CHAT = '936498491';
+
+        const name = document.getElementById('name').value;
+        const count = document.getElementById('count').value;
+
+        const msg = `🎉 Новый ответ на свадьбу!\n\n👤 Гость: ${name}\n✅ Пойдет: ${attVal}\n👥 Количество человек: ${count}`;
+        const url = `https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT}&text=${encodeURIComponent(msg)}`;
+
+        fetch(url).then(res => {
+            if (res.ok) {
+                document.getElementById('main-content').style.display = 'none';
+                document.getElementById('success').style.display = 'block';
+            } else {
+                alert('Ошибка отправки. Обязательно запустите (нажмите Start) бота в Telegram перед отправкой!');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
