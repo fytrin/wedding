@@ -234,23 +234,21 @@
             return;
         }
 
-        // ВСТАВЛЕННЫЕ ДАННЫЕ ВАШЕГО БОТА И CHAT ID (Лишний пробел в токене автоматически убран программно)
-        const TOKEN = '8862363263:AAHcvuq9zvPuExxuNpqUgkzQxHgMy3jqNfI';
-        const CHAT = '936498491';
-
-        const name = document.getElementById('name').value;
-        const count = document.getElementById('count').value;
-
-        const msg = `🎉 Новый ответ на свадьбу!\n\n👤 Гость: ${name}\n✅ Пойдет: ${attVal}\n👥 Количество человек: ${count}`;
-        const url = `https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT}&text=${encodeURIComponent(msg)}`;
-
-        fetch(url).then(res => {
-            if (res.ok) {
-                document.getElementById('main-content').style.display = 'none';
-                document.getElementById('success').style.display = 'block';
-            } else {
-                alert('Ошибка отправки. Обязательно запустите (нажмите Start) бота в Telegram перед отправкой!');
-            }
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxkl5r8YOnv6opYLkkXOw1oDNS9KTanfFW77D5YD7Ajcq9i4hTtfgt56_3bgQ4FUvsfCw/exec'; 
+const name = document.getElementById('name').value;
+const count = document.getElementById('count').value;
+const payload = { name: name, attendance: attVal, count: count };
+        
+        fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        }).then(() => {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('success').style.display = 'block';
+        }).catch(() => {
+            alert('Ошибка сети. Проверьте интернет.');
         });
     });
 </script>
