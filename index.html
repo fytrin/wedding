@@ -234,23 +234,23 @@
             return;
         }
 
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwQztMr7is4HGFu_vJM0xYXNxp3YGrxPpQACAEtEUHXH2pALmh6UHU3933SPMSCU2Xtqw/exec'; 
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzZy7_lzIeMliw2BS55fOY3lMKf4ZXq7X3ZmNpROvJ19h2cTcwUf8lccAzMMKOWLQ6vvw/exec'; 
 const name = document.getElementById('name').value;
 const count = document.getElementById('count').value;
-const payload = { name: name, attendance: attVal, count: count };
-        
+const formData = new URLSearchParams();
+        formData.append('name', name);
+        formData.append('attendance', attVal);
+        formData.append('count', count);
+
         fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
             mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
+            body: formData
         }).then(() => {
             document.getElementById('main-content').style.display = 'none';
             document.getElementById('success').style.display = 'block';
-        }).catch(() => {
-            alert('Ошибка сети. Проверьте интернет.');
         });
-    });
+        });
 </script>
 
 </body>
